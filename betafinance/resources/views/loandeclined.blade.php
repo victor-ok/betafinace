@@ -12,12 +12,15 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
     </head>
     <body>
-        <div class="card text-center mt-2">
-    
-            <div class="card-header text-muted ">
-                LOAN APPROVED
-            </div>
-        </div>
+    <div class="card text-center ">
+  
+  <div class="card-header text-muted bg-primary rounded-bottom">
+      <h1 class="text-white">
+          LOAN DECLINED
+      </hi>
+  </div>
+</div>
+
 
 
         <div class="card text-center border-0">
@@ -37,13 +40,14 @@
 
     <!-- Footer -->
     <footer class="page-footer font-small teal pt-4">
-        <div class="card text-center mt-4">
-        
-        <div class="card-footer text-muted ">
-            Powered By: PISI Technologies
-        </div>
-        </div>
-    </footer>
+<div class="card text-center mt-4  rounded-top">
+  
+  <div class="card-footer text-muted mb-0 bg-primary">
+    <p class="text-white">
+        <span style="color:orange">Powered By:</span> PISI Technologies
+    </p>
+  </div>
+</div>
 
     </body>
     <!-- Bootstrap Bundle with Popper -->

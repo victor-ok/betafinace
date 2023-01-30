@@ -11,13 +11,15 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
     </head>
-    <body>
-        <div class="card text-center mt-2">
-    
-            <div class="card-header text-muted ">
-                LOAN APPROVED
-            </div>
-        </div>
+    <body class="height: 100vh">
+    <div class="card text-center ">
+  
+  <div class="card-header text-muted bg-primary rounded-bottom">
+      <h1 class="text-white">
+          LOAN APPROVED
+      </hi>
+  </div>
+</div>
 
 
         <div class="card text-center border-0">
@@ -27,7 +29,7 @@
   <div class="card-body">
   <span id="boot-icon" class="bi bi-check-circle-fill" style="font-size: 130px; color: rgb(0, 128, 55);"></span>
     <h5 class="card-title">Congratulations</h5>
-    <p class="card-text">Your loan of #50,000 has been approved. A confirmation<br> message has been sent to your Email/Phone</p>
+    <p class="card-text">Your loan has been approved. A confirmation<br> message has been sent to your Email/Phone</p>
     
     
 
@@ -36,13 +38,14 @@
 
     <!-- Footer -->
     <footer class="page-footer font-small teal pt-4">
-        <div class="card text-center mt-4">
-        
-        <div class="card-footer text-muted ">
-            Powered By: PISI Technologies
-        </div>
-        </div>
-    </footer>
+<div class="card text-center mt-4  rounded-top">
+  
+  <div class="card-footer text-muted mb-0 bg-primary">
+    <p class="text-white">
+        <span style="color:orange">Powered By:</span> PISI Technologies
+    </p>
+  </div>
+</div>
 
     </body>
     <!-- Bootstrap Bundle with Popper -->
