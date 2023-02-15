@@ -2,11 +2,5 @@
     "require": {
   "php": "^8.0.0"
   }
-    "extra": {
-                "npm": {
-                        "dev": "vite",
-                        "build": "vite build"
-                },
-        }
  
 }
