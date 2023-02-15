@@ -24,7 +24,12 @@ class LoanApplicants extends Model
         'loanamount',
         'paymentRef',
         'monnifyRef',
-        'paid'
+        'paid',
+        'availableloan',
+        'denied',
+        'editedamount',
+        'confirmed',
+        'disbursed'
 
 
     ];

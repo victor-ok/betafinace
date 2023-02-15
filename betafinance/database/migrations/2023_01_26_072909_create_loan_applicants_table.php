@@ -28,6 +28,12 @@ return new class extends Migration
             $table->string('paymentRef')->nullable();
             $table->string('monnifyRef')->nullable();
             $table->string('paid')->nullable();
+            $table->string('availableloan')->nullable();
+            $table->string('denied')->nullable();
+            $table->string('editedamount')->nullable();
+            $table->string('confirmed')->nullable();
+            $table->string('disbursed')->nullable();
+
             $table->timestamps();
 
         });

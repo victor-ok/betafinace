@@ -13,46 +13,9 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
         <style>
-          #for{
-            display: flex;
-            justify-content: center;
-            /* border: 1px solid red; */
-            width: 30%;
-            margin: 0 auto;
-            justify-content: space-between;
-          }
-          
-          @media screen and (max-width: 700px){
-            #for{
-                display: block;
-                width: 60%;
-            }
-          }
+           
           
         </style>
-
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-  rel="stylesheet"
-/>
-<!-- Google Fonts -->
-<link
-  href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-  rel="stylesheet"
-/>
-<!-- MDB -->
-<link
-  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css"
-  rel="stylesheet"
-/>
-
-
-<!-- MDB -->
-<script
-  type="text/javascript"
-  src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.js"
-></script>
-
     </head>
     <body class="d-flex flex-column mh-100" id="page-container">
 
@@ -77,84 +40,26 @@
         
         <!-- <h5 class="card-title">Congratulations</h5> -->
         <p class="card-text" id="amount-texty">
-            Click the button to accept or decline the loan amount available for you.
+            Click the button to confirm your payment status.
         <p>
 
 
 
-                    
-                       
-                    
+                 
+
+
+        <?php echo $sta?> 
 
 
 
 
 
-        <!-- onclick="window.location='loan-accept?paymentReference=
-        <?php 
-        // echo $status
-        ?>
-        '";  onClick="window.location.reload()" -->
-<div id="for">
-<form class="form-example " >
-
-
-        <button class="btn btn-warning" type="button" data-mdb-toggle="modal" data-mdb-target="#exampleModal" >
-                Approve Loan Amount
-            <!-- </a> -->
-        </button>
-</form>
-
-
-<form class="form-example " onclick="window.location='loan-decline?paymentReference=<?php echo $status?>'";  onClick="window.location.reload()" >
+<form class="form-example " onclick="window.location='loan-app-confirm?paymentReference=<?php echo $sta?>'";  onClick="window.location.reload()">
         <button class="btn btn-warning" type="button">
-                Decline Loan Amount
+                Check Payment Status
             <!-- </a> -->
         </button>
 </form>
-
-        </div>
-
-<!-- Button trigger modal -->
-<!-- <button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
-  Launch demo modal
-</button> -->
-
-
-<!-- action="loan-accept-edit" -->
-<form action="loan-accept-edit" method="get" >
-{{ csrf_field() }}
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" >Input Amount</h5>
-        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      <div class="form-outline mb-4">
-    <input type="number" id="amount" name="amount" class="form-control" />
-    <label class="form-label" for="amount">Amount</label>
-    <input type="hidden" id="custId" name="custId" value="<?php echo $status?>">
-  </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" name="submit">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-
-
-<!-- onclick="window.location='loan-accept-edit?paymentReference=
-<?php 
-// echo $status 
-?>
-
-'" -->
-
         <!-- <button class="btn btn-warning" type="button" id="start-payment-button" onclick="window.location='{{ url('/loan-app') }}'">
             Check Application Details
         </button> -->

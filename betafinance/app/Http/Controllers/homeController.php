@@ -27,6 +27,13 @@ class homeController extends Controller
 
     public function index()
     {
+        // return view('home');
+        return view('landing');
+    }
+
+    public function start()
+    {
+        // return view('home');
         return view('home');
     }
 
@@ -88,7 +95,7 @@ class homeController extends Controller
 
             THEN GET TRANSACTION STATUS
         */
-        $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
         $bytes = substr(str_shuffle($str_result), 0, 10);
         $ref = $bytes;
         
@@ -122,7 +129,7 @@ class homeController extends Controller
                     "paymentMethods"=>[]
             ]);
 
-            // var_dump($check->getBody()->getContents());
+
             
             $json = json_decode($check, true);
             $json['responseBody']['transactionReference']; 
@@ -131,7 +138,6 @@ class homeController extends Controller
            
             $urltrans = urlencode($transref);
 
-            // dd($name, $ref, $transref);
 
             
 
@@ -144,84 +150,20 @@ class homeController extends Controller
 
                 return Redirect::to("https://sandbox.sdk.monnify.com/checkout/" .$urltrans);
 
-                // dd($name, $ref, $transref);
-                // LoanApplicants::where('name', $name)->update([
-                //                         'paymentRef' => $ref,
-                //                         'monnifyRef' => $transref
-                //                     ]);
-
-                // $pay = LoanApplicants::where('name', '=', $name)->first();
-                // $pay->paymentRef = $ref;
-                // $pay->monnifyRef = $transref;
-                // $pay->save();
-                // $id = LoanApplicants::where('name', $name)->get('id');
-                // LoanApplicants::where('id', $id)
-                //      ->update(['paid' => "paid"]);
-               
-                // $name = DB::table('LoanApplicants')->where('name', $name)->update("paid", "paid");
-
-                // $student = LoanApplicants::find($name);
-                // $student->paid = "paid";
-                
-                // $student->update();
-                
-                // $check_status = Http::withHeaders([
-                //     'Content-Type' => 'application/json',
-                //     'Authorization' => 'Bearer ' .$bearer,
-                // ])->get('https://sandbox.sdk.monnify.com/api/v1/transactions' .$urltrans);
-
-
-                // $check_action->getBody()->getContents();
-
-                // if(){
-
-                // }
-
             }
 
             
 
             
         }
-        // $curl = curl_init();
- 
-        //          curl_setopt_array($curl, array(
-        //          CURLOPT_URL => 'https://sandbox.monnify.com/api/v1/auth/login',
-        //          CURLOPT_RETURNTRANSFER => true,
-        //          CURLOPT_ENCODING => '',
-        //          CURLOPT_MAXREDIRS => 10,
-        //          CURLOPT_TIMEOUT => 0,
-        //          CURLOPT_FOLLOWLOCATION => true,
-        //          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        //          CURLOPT_CUSTOMREQUEST => 'POST',
-        //          CURLOPT_POSTFIELDS =>$dat,
-        //          CURLOPT_HTTPHEADER => array(
-        //              'Content-Type: application/json'
-                     
-        //          ),
-        //          ));
- 
-        //          $response = curl_exec($curl);
-        //          \Log::info('IBRIS Response: '.$response);
-        //          curl_close($curl);
-        //          $responseData = json_decode($response);
-        //          print_r($responseData);
-        // $response = Http::withBasicAuth('MK_TEST_L400YM060T', '6Y0N89VEE2U9R1QLRU42E686H7Q8ZJHR')->post('sandbox.monnify.com/api/v1/auth/login');
-
         
-        // return view('loanapplication');
     }
-
-
-
-
-
 
     public function payment_details(){
 
-        // $string = url()->full();
 
-        // dd($string);
+        $got = '';
+        $gotten = '';
 
         $start  = Http::withBasicAuth('MK_TEST_L400YM060T', '6Y0N89VEE2U9R1QLRU42E686H7Q8ZJHR'
         )->post('https://api.monnify.com/api/v1/auth/login', []);
@@ -231,76 +173,137 @@ class homeController extends Controller
         $json = json_decode($start, true);
         $json['responseBody']['accessToken'];  
         $bearer = $json['responseBody']['accessToken'];
-        // $checkout = $check['responseBody']['checkoutUrl'];
-        // $transref1 = $json['responseBody']['transactionReference']; 
-        // $currentURL = url()->full();
-    
-        // dd($currentURL);
-        
-        // $string = url()->full();
-        // dd($string);
-        // $pattern = '/[=]/';
-        // $string = url()->full();
-        // dd($string);
-        // $uri =  preg_split( $pattern, $string );
-        // dd($uri);
-        // $urlRef = $uri[1];
-        // // $array = explode(" ",$str); 
 
-        // $newTrans = explode(" ",$urlRef);
-        // // var_dump($newTrans);
-        // $clean_url = str_replace("%", "|", $newTrans);
-        // dd($clean_url);
-        // $implode = implode(" ", $clean_url);
-        // $urltran = urlencode($implode);
-        // dd($urltran);
-
-
-        // dd($urltrans);
-        // $trans_status = Http::withHeaders([
-        //     'Content-Type' => 'application/json',
-        //     'Authorization' => 'Bearer ' .$bearer,
-        // ])->get('https://sandbox.monnify.com/api/v2/transactions/' .$urltrans);
         
         if(!is_null($bearer)){
             $string = url()->full();
             // dd($string);
             $pattern = '/[=]/';
-            $uri =  preg_split( $pattern, $string);
+            $uri =  preg_split($pattern, $string);
             $ref = $uri[0];
             $monRef = $uri[1];
+            // dd($monRef);
             $length = strlen($monRef);
             // dd($monRef);
             // dd($length);
+            
+            switch ($length) {
+                case 10:
+                    $sucREF = $monRef;
+                    $here = LoanApplicants::where('paymentRef', $sucREF)->get('monnifyRef')->first();
+                    // dd($here);
+                    $gotten = $here->monnifyRef;
+                    // dd($gotten);
+                    // dd('na 10 o');
 
-            if ($length == 10 ){
-                $here = LoanApplicants::where('paymentRef', $monRef)->first();
-                // dd($here);
-                if ($here){
-                    $gotten = $here->first('monnifyRef');
-                    $REF = $gotten;
-                } else {
-                    $REF = '';
-                }
+
+
+
+                    if ($gotten != null){
+                
+
+                        $checking = Http::withHeaders([
+                            'Content-Type' => 'application/json',
+                            'Authorization' => 'Bearer ' .$bearer,
+                        ])->get('https://sandbox.monnify.com/api/v2/transactions/'.$gotten);
+
+                        $json = json_decode($checking, true);
+                        // dd($REF['monnifyRef']);
+                        // dd($json);
+
+                        $json['responseBody']['paymentStatus'];  
+                        $payStatus = $json['responseBody']['paymentStatus'];
+
+                        // dd($payStatus);
+                        if($payStatus === "PAID"){
+                            $status = $gotten;
+                            $pay_status = LoanApplicants::where('monnifyRef', '=', $gotten)->first();
+                            $pay_status->update(['paid' => $payStatus]);
+                            // dd($pay_status);
+                            
+                            // $REF = "";
+                
+                            // $pay_status->save();
+                            // echo "<script>
+                            //         setTimeout(function(){ window.location.href = '/'; }, 5000);
+                            //     </script>";pay
+                            // dd('paying');
+                        return view('loanapplication')->with(compact('status'));
+                        }
+
+                // dd('no');
             }
-
-            if ($length == 35){
-                $clean_ref = str_replace("%7C", "|", $monRef);
-                // dd($clean_ref);
-                $there = LoanApplicants::where('monnifyRef', $clean_ref)->first();
+                    
+                    
+                
+                case 35:
+                    $failREF = $monRef;
+                    $clean_ref = str_replace("%7C", "|", $failREF);
+                    // dd($clean_ref);
+                    $there = LoanApplicants::where('monnifyRef', $clean_ref)->get('monnifyRef')->first();
                     // dd($there);
-
-                    if($there){
-                            $got = $there->first('monnifyRef');
-                            $REF = $got;
-                            // $there->monnifyRef?$there->monnifyRef:'';
-                                // dd($REF);
-                            }else {
-                                $REF = '';
-                            }
-                    // $REF = $got;
-                    // dd($REF);
+                    $got = $there->monnifyRef;
+                    // dd($got);
+                    // dd('na 35 o');
+                                   
+                    if ($got != null) {
+                        // dd('im here');
+                        $checking = Http::withHeaders([
+                            'Content-Type' => 'application/json',
+                            'Authorization' => 'Bearer ' .$bearer,
+                        ])->get('https://sandbox.monnify.com/api/v2/transactions/'.$got);
+        
+                        $json = json_decode($checking, true);
+                        // dd($REF['monnifyRef']);
+                        // dd($json);
+        
+                        $json['responseBody']['paymentStatus'];  
+                        $paySta = $json['responseBody']['paymentStatus'];
+        
+                        // dd($paySta);
+        
+                        if($paySta === "PENDING"){
+                            $sta = $got;
+                            $pay_sta = LoanApplicants::where('monnifyRef', '=', $got)->first();
+                            $pay_sta->update(['paid' => $paySta]);
+                            // dd($pay_status);
+                            
+                            // $REF = "";
+                
+                            // $pay_status->save();
+                            // echo "<script>
+                            //         setTimeout(function(){ window.location.href = '/'; }, 5000);
+                            //     </script>";
+                            echo "<script>
+                                    setTimeout(function(){ window.location.href = '/'; }, 5000);
+                                </script>";
+                            return view('loandeclined');
+                        // return view('loanapplicationpending')->with(compact('sta'));
+                    }
             }
+
+            // if ($length === 10 ){
+                
+            //     $sucREF = $monRef;
+            //     $here = LoanApplicants::where('paymentRef', $sucREF)->get('monnifyRef')->first();
+            //     dd($here);
+            //     $gotten = $here;
+            //     // dd($gotten);
+                
+            // }
+
+            // if ($length === 35){
+            //     $failREF = $monRef;
+            //     $clean_ref = str_replace("%7C", "|", $failREF);
+            //     // dd($clean_ref);
+            //     $there = LoanApplicants::where('monnifyRef', $clean_ref)->get('monnifyRef')->first();
+            //         // dd($there);
+            //         $got = $there;
+            //         // var_dump($got);
+            //         // dd($there->first('monnifyRef'));
+            //         // $REF = $got;
+            //         // dd($got);
+            // }
 
 
 
@@ -402,51 +405,263 @@ class homeController extends Controller
             //  dd($users);
             // $REF = $here->monnifyRef?$here->monnifyRef : NULL;
 
+            
 
 
 
-
-
+                
 
             
-            if ($REF){
-            $checking = Http::withHeaders([
-                'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer ' .$bearer,
-            ])->get('https://sandbox.monnify.com/api/v2/transactions/'.$REF['monnifyRef']);
+            
+                
+            
+            // $checking = Http::withHeaders([
+            //     'Content-Type' => 'application/json',
+            //     'Authorization' => 'Bearer ' .$bearer,
+            // ])->get('https://sandbox.monnify.com/api/v2/transactions/'.$REF['monnifyRef']);
         
 
-        $json = json_decode($checking, true);
-        // dd($REF['monnifyRef']);
-        // dd($json);
+        // $json = json_decode($checking, true);
+        // // dd($REF['monnifyRef']);
+        // // dd($json);
 
-        $json['responseBody']['paymentStatus'];  
-        $payStatus = $json['responseBody']['paymentStatus'];
+        // $json['responseBody']['paymentStatus'];  
+        // $payStatus = $json['responseBody']['paymentStatus'];
 
         // dd($payStatus);
 
-        if($payStatus === "PAID"){
-            $pay_status = LoanApplicants::where('monnifyRef', '=', $REF['monnifyRef'])->first();
-            $pay_status->update(['paid' => $payStatus]);
+        // if($payStatus === "PAID"){
+        //     $status = $REF['monnifyRef'];
+        //     $pay_status = LoanApplicants::where('monnifyRef', '=', $REF['monnifyRef'])->first();
+        //     $pay_status->update(['paid' => $payStatus]);
             
-            $REF = "";
-            // $pay_status->save();
-            echo "<script>
-                    setTimeout(function(){ window.location.href = '/'; }, 5000);
-                </script>";
-        return view('loanapproved');
-        } elseif ($payStatus === "PENDING"){
-             $pay_status = LoanApplicants::where('monnifyRef', '=', $REF['monnifyRef'])->first();
-             $pay_status->update(['paid' => $payStatus]);
-            // $pay_status->save();
-            $REF = "";
-            echo "<script>
-                    setTimeout(function(){ window.location.href = '/'; }, 3000);
-                </script>";
-            return view('loandeclined');
-        }
+        //     $REF = "";
+
+        //     // $pay_status->save();
+        //     // echo "<script>
+        //     //         setTimeout(function(){ window.location.href = '/'; }, 5000);
+        //     //     </script>";
+        // return view('loanapplication')->with(compact('status'));
+
+        // } elseif ($payStatus === "PENDING"){
+        //     $sta = $REF['monnifyRef'];
+        //     dd($sta);
+        //      $pay_stat = LoanApplicants::where('monnifyRef', '=', $REF['monnifyRef'])->first();
+        //      $pay_stat->update(['paid' => $payStatus]);
+        //     // $pay_status->save();
+        //     $REF = "";
+        //     // echo "<script>
+        //     //         setTimeout(function(){ window.location.href = '/'; }, 3000);
+        //     //     </script>";
+        //     return view('loanapplicationpending')->with(compact('sta'));
+        //     // return view('loandeclined');
+
+        // } elseif ($payStatus === "FAILED"){
+        //     $status = $REF['monnifyRef'];
+        //     $pay_status = LoanApplicants::where('monnifyRef', '=', $REF['monnifyRef'])->first();
+        //      $pay_status->update(['paid' => $payStatus]);
+        //     // $pay_status->save();
+
+        //     $REF = "";
+        //     // echo "<script>
+        //     //         setTimeout(function(){ window.location.href = '/'; }, 3000);
+        //     //     </script>";
+        //     return view('loanapplication')->with(compact('status'));
+        //     // return view('loandeclined');
+        // }
         // ["paymentStatus"]=> string(4) "PAID"
-        }
+        // }
+    // }
+        
+    }
+}
+
+        
+    }
+    public function checking_status(){
+        $stat  = Http::withBasicAuth('MK_TEST_L400YM060T', '6Y0N89VEE2U9R1QLRU42E686H7Q8ZJHR'
+        )->post('https://api.monnify.com/api/v1/auth/login', []);
+
+
+        $json = json_decode($stat, true);
+        $json['responseBody']['accessToken'];  
+        $bearer = $json['responseBody']['accessToken'];
+
+        if(!is_null($bearer)){
+            $str = url()->full();
+            // dd($string);
+            $pattern = '/[=]/';
+            $ur =  preg_split($pattern, $str);
+            $ref = $ur[0];
+            $monRef = $ur[1];
+            // dd($monRef);
+            // $length = strlen($monRef);
+
+            $clean_ur = str_replace("%7C", "|", $monRef);
+            // dd($clean_ur);
+
+            $checked = LoanApplicants::where('monnifyRef', $clean_ur)->first();
+            // dd($checked);
+            $reff = $checked;
+            // dd($reff);
+
+            if ($reff){
+                $checking = Http::withHeaders([
+                    'Content-Type' => 'application/json',
+                    'Authorization' => 'Bearer ' .$bearer,
+                ])->get('https://sandbox.monnify.com/api/v2/transactions/'.$reff['monnifyRef']);
+
+                $json = json_decode($checking, true);
+                // dd($REF['monnifyRef']);
+                // dd($json);
+
+                $json['responseBody']['paymentStatus'];  
+                $payStatus = $json['responseBody']['paymentStatus'];
+
+                if($payStatus === "PAID"){
+                    echo "<script>
+                            setTimeout(function(){ window.location.href = '/'; }, 5000);
+                        </script>";
+                return view('loanapproved');
+
+                } elseif ($payStatus === "PENDING"){
+                    echo "<script>
+                            setTimeout(function(){ window.location.href = '/'; }, 5000);
+                        </script>";
+                return view('loandeclined');
+                } elseif ($payStatus === "FAILED"){
+                    echo "<script>
+                            setTimeout(function(){ window.location.href = '/'; }, 5000);
+                        </script>";
+                return view('loandeclined');
+                }
+            }
         }
     }
+
+    public function decline_loan(){
+        $str = url()->full();
+        $pattern = '/[=]/';
+        $ur =  preg_split($pattern, $str);
+        $ref = $ur[0];
+        $monRef = $ur[1];
+        // dd($monRef);
+
+        $clean_ur = str_replace("%7C", "|", $monRef);
+            // dd($clean_ur);
+            // $accept = LoanApplicants::where('paymentRef', $monRef)->get('monnifyRef')->first();
+        $checked = LoanApplicants::where('monnifyRef', $clean_ur)->first();
+        // dd($checked);
+        $checked->update(['denied' => 'user-denied']);
+        echo "<script>
+                setTimeout(function(){ window.location.href = '/'; }, 5000);
+            </script>";
+        return view('loandeclined');
+    }
+
+    public function accept_loan(){
+        $str = url()->full();
+        $pattern = '/[=]/';
+        $ur =  preg_split($pattern, $str);
+        $ref = $ur[0];
+        $monRef = $ur[1];
+        // dd($monRef);
+
+        $clean_ur = str_replace("%7C", "|", $monRef);
+            // dd($clean_ur);
+        $accept = LoanApplicants::where('paymentRef', $monRef)->get('monnifyRef')->first();
+        $checked = LoanApplicants::where('monnifyRef', $clean_ur)->first();
+        // dd($checked);
+        $checked->update(['denied' => 'user-accepted']);
+        echo "<script>
+                setTimeout(function(){ window.location.href = '/'; }, 5000);
+            </script>";
+        return view('loanapproved');
+    }
+
+    public function accept_loan_edit(Request $request){
+        $edited_loan_amount = $request->amount;
+        $reff = $request->custId;
+        // dd($edited_loan_amount);
+        // dd($reff);
+
+        // $str = url()->full();
+        // $pattern = '/[=]/';
+        // $ur =  preg_split($pattern, $str);
+        // $ref = $ur[0];
+        // $monRef = $ur[1];
+        // $clean_ur = str_replace("%7C", "|", $monRef);
+
+        // $accept = LoanApplicants::where('paymentRef', $monRef)->get('monnifyRef')->first();
+        // dd($accept);
+        $checked = LoanApplicants::where('monnifyRef', $reff)->first();
+        $checked->update(['editedamount' => $edited_loan_amount]);
+        $checked->update(['denied' => 'user-accepted']);
+        // dd($checked);
+        $reff = $checked['monnifyRef'];
+        // dd($reff);
+
+
+        
+
+        return view('loanapprovededited')->with(compact('edited_loan_amount', "reff"));
+    }
+
+    public function decline_after_edit(Request $request) {
+        // dd($request->all());
+        $str = url()->full();
+        $pattern = '/[=]/';
+        $ur =  preg_split($pattern, $str);
+        $ref = $ur[0];
+        $monRef = $ur[1];
+        $clean_u = str_replace("%7C", "|", $monRef);
+        // dd($clean_u);
+
+        $checked = LoanApplicants::where('monnifyRef', $clean_u)->first();
+        // dd($checked);
+        $checked->update(['denied' => 'user-denied']);
+        echo "<script>
+                setTimeout(function(){ window.location.href = '/'; }, 5000);
+            </script>";
+        return view('loandeclined');
+    }
+
+    public function accept_after_edit(Request $request) {
+        // dd($request->all());
+        $str = url()->full();
+        $pattern = '/[=]/';
+        $ur =  preg_split($pattern, $str);
+        $ref = $ur[0];
+        $monRef = $ur[1];
+        $clean_u = str_replace("%7C", "|", $monRef);
+        // dd($clean_u);
+
+        $checked = LoanApplicants::where('monnifyRef', $clean_u)->first();
+        $n = $checked['name'];
+        $d = $checked['dob'];
+        $id = $checked['id'];
+        $idnum = $checked['idnum'];
+        $bvn = $checked['bvn'];
+        $email = $checked['email'];
+        $phone = $checked['phone'];
+        $bank = $checked['bank'];
+        $account = $checked['account'];
+        $loanamount = $checked['editedamount'];
+        // dd($checked);
+
+        return view('applicationdetailsconfirm')->with(compact('n', 'd', 'id', 'idnum', 'bvn', 'email', 'phone', 'bank', 'account', 'loanamount'));
+    }
+
+    public function confirm_after_edit($email) {
+        $confirm = LoanApplicants::where('email', $email)->first();
+        // dd($email);
+        // dd($confirm);
+
+        // IMPLEMENT UPDATING THE NEW DTABASE FIELD OF CONFIRM
+        echo "<script>
+                setTimeout(function(){ window.location.href = '/'; }, 5000);
+            </script>";
+        return view('loanapprovedfinal');
+    }
+
 }

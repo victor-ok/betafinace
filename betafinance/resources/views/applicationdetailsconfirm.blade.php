@@ -48,15 +48,15 @@
             </div>
         </div>
 
-        <form class="form-example " action="loan-app-pay/<?php echo $name;?>/<?php echo $email;?>"  method="post">
+        <form class="form-example " action="loan-app-disburse/<?php echo $email;?>"  method="post">
                     {{ csrf_field() }}
 
         <div class="container h-100 mt-4">
             <div class="row h-100 justify-content-center align-items-center">
                 <div class="col-10 col-md-8 col-lg-6">
                     
-                    <p class="text-center font-weight-bold">Name: {{ $name }}</p>
-                    <p class="text-center font-weight-bold">Date Of Birth: {{ $DOB }}</p>
+                    <p class="text-center font-weight-bold">Name: {{ $n }}</p>
+                    <p class="text-center font-weight-bold">Date Of Birth: {{ $d }}</p>
                     <p class="text-center font-weight-bold">ID: {{ $id }}</p>
                     <p class="text-center font-weight-bold">ID: {{ $idnum }}</p>
                     <p class="text-center font-weight-bold">BVN: {{ $bvn }}</p>
@@ -70,24 +70,21 @@
                     
                     <div class="button-middle">
                         <div class='button-stretch'>
-                        <button type="submit" class="btn btn-success" name="submit" id="but">
-                            Proceed
-                        </button>
-                        </div>
-                        <!-- <button type="submit" class="btn btn-success btn-block" name="submit" id="but">
-                            Proceed
-                        </button> -->
+                    <button type="submit" class="btn btn-success btn-block" name="submit" id="but">
+                        Proceed
+                    </button>
 
-                        <p class="card-text text-muted border-0" id="but-text-1">
-                            Click proceed to <br>pay 1000 to BetFinance to process your application
-                        </p> 
-                        
-                        <p class="" id="but-text-1">
-                                Call +234xxxxxxxxxx or email info@betafinance.ng for any changes
-                        </p>
-                    </div>
+                    <p class="card-text text-muted border-0" id="but-text-1">
+                        Click proceed to confirm your details
+                    </p> 
+                    
+                    <p class="" id="but-text-1">
+                            Call +234xxxxxxxxxx or email info@betafinance.ng for any changes you want to make to your details.
+                    </p>
                 </div>
             </div> 
+        </div>
+
             
                     
                    

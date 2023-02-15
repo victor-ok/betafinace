@@ -25,6 +25,9 @@
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" >
 
+
+    
+
 </head>
 
 <body id="page-top">
@@ -155,6 +158,27 @@
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Settings</span></a>
             </li> -->
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Reports</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Custom Reports:</h6>
+                        <div class="text-center">
+                        <a href="create-admin-page" class="btn btn-default btn-rounded mb-4" >Create User</a>
+                        </div>
+                        <!-- <a class="collapse-item" href="create-admin-page">Create User</a> -->
+                        <!-- <a class="collapse-item" href="cards.html">Cards</a> -->
+                    </div>
+                </div>
+            </li>
+
+
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
@@ -163,11 +187,11 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Seetings:</h6>
+                        <h6 class="collapse-header">Custom Settings:</h6>
                         <div class="text-center">
-                        <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">Create User</a>
+                        <a href="create-admin-page" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">Create User</a>
                         </div>
-                        <a class="collapse-item" href="create-admin-page">Create User</a>
+                        <!-- <a class="collapse-item" href="create-admin-page">Create User</a> -->
                         <!-- <a class="collapse-item" href="cards.html">Cards</a> -->
                     </div>
                 </div>
@@ -428,115 +452,116 @@
                             href="https://datatables.net">official DataTables documentation</a>.</p> -->
 
                     <!-- DataTales Example -->
-  
+                    <div class="card shadow mb-4">
+
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Total Applications</h6>
+                        </div>
+
+                        
+<!-- <button onclick=" window.location.href='/login'">Go Back</button> -->
+                        
+                        <div class="card-body">
+                            <form action="/disburse-table-search">
+                            <label for="birthday">From:</label>
+                            <input type="date" id="from" name="from">
+
+                            <label for="birthday">To:</label>
+                            <input type="date" id="to" name="to">
+                            <input type="submit">
+
+
+                        </form>
+                        <button type="button" class="btn btn-info" onclick=" window.location.href='/disburse-table'">RESET</button>
+                        <br>
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Created_at</th>
+                                        <th>Name</th>
+                                        <th>DoB</th>
+                                        <th>Id</th>
+                                        <th>idnum</th>
+                                        <th>BVN</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Bank</th>
+                                        <th>Account</th>
+                                        <th>Loan Amount</th>
+                                        <th>Payment Ref</th>
+                                        <th>Monnify Ref</th>
+                                        <th>Payment Status</th>
+                                        <th>Available Loan</th>
+                                        <th>Details</th>
+                                        <th>Disbursed</th>
+                                        <th>Created_at</th>
+                                        <th>Account</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Created_at</th>
+                                        <th>Name</th>
+                                        <th>DoB</th>
+                                        <th>Id</th>
+                                        <th>idnum</th>
+                                        <th>BVN</th>
+                                        <th>Email</th>
+                                        <th>Phone</th>
+                                        <th>Bank</th>
+                                        <th>Account</th>
+                                        <th>Loan Amount</th>
+                                        <th>Payment Ref</th>
+                                        <th>Monnify Ref</th>
+                                        <th>Paid</th>
+                                        <th>Available Loan</th>
+                                        <th>Denied</th>
+                                        <th>Disbursed</th>
+                                        
+                                        <th>Updated_at</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    @foreach($total_list as $data)
+                                    <tr>
+                                        <td>{{ $data->created_at }}</td>
+                                        <td>{{ $data->name }}</td>
+                                        <td>{{ $data->dob }}</td>
+                                        <td>{{ $data->id }}</td>
+                                        <td>{{ $data->idnum }}</td>
+                                        <td>{{ $data->bvn }}</td>
+                                        <td>{{ $data->email }}</td>
+                                        <td>{{ $data->phone }}</td>
+                                        <td>{{ $data->bank }}</td>
+                                        <td>{{ $data->account }}</td>
+                                        <td>{{ $data->loanamount }}</td>
+                                        <td>{{ $data->paymentRef }}</td>
+                                        <td>{{ $data->monnifyRef }}</td>
+                                        <td>{{ $data->paid }}</td>
+                                        <td>{{ $data->availableloan }}</td>
+                                        <td>{{ $data->denied }}</td>
+                                        <td>{{ $data->disbursed }}</td>
+                                        
+                                        <td>{{ $data->updated_at }}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody> 
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                
+<!-- <div class="text-center">
+  <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalRegisterForm">Launch
+    Modal Register Form</a>
+</div> -->
+
+                        
+                </div>
                 <!-- /.container-fluid -->
-
-
-                <section class="h-100 h-custom" style="background-color: #8fc4b7;">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-lg-8 col-xl-6">
-        <div class="card rounded-3">
-          <!-- <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
-            class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
-            alt="Sample photo"> -->
-          <div class="card-body p-4 p-md-5">
-            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Create New User</h3>
-
-
-            <!-- <form class="form-example " action="loan-details" method="post"> -->
-                    
-
-            @if (isset($error))
-    <div class="col-sm-12">
-        <div class="alert  alert-danger alert-dismissible fade show" role="alert">
-          $error
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-        </div>
-    </div>
-@endif
-            <form class="px-md-2"  action="create-admin" method="post">
-            {{ csrf_field() }}
-              <!-- <div class="form-outline mb-4">
-                <input type="text" id="form3Example1q" class="form-control" />
-                <label class="form-label" for="form3Example1q">Name</label>
-              </div> -->
-
-              <!-- <div class="row">
-                <div class="col-md-6 mb-4">
-
-                  <div class="form-outline datepicker">
-                    <input type="text" class="form-control" id="exampleDatepicker1" />
-                    <label for="exampleDatepicker1" class="form-label">Select a date</label>
-                  </div>
-
-                </div>
-                <div class="col-md-6 mb-4">
-
-                  <select class="select">
-                    <option value="1" disabled>Gender</option>
-                    <option value="2">Female</option>
-                    <option value="3">Male</option>
-                    <option value="4">Other</option>
-                  </select>
-
-                </div>
-              </div> -->
-
-              <!-- <div class="mb-4">
-
-                <select class="select">
-                  <option value="1" disabled>Class</option>
-                  <option value="2">Class 1</option>
-                  <option value="3">Class 2</option>
-                  <option value="4">Class 3</option>
-                </select>
-
-              </div> -->
-             
-
-              <div class="row mb-4 pb-2 pb-md-0 mb-md-5">
-                <div class="col-md-6">
-
-                  <div class="form-outline">
-                    <input type="text" id="name" name="name" class="form-control" />
-                    <label class="form-label" for="name">Username</label>
-                  </div>
-
-                </div>
-              </div>
-              <div class="row mb-4 pb-2 pb-md-0 mb-md-5">
-                <div class="col-md-6">
-
-                  <div class="form-outline">
-                    <input type="text" id="password" name="password" class="form-control" />
-                    <label class="form-label" for="password">Password</label>
-                  </div>
-
-                </div>
-              </div>
-
-              <!-- <div class="col-md-6 mb-4">
-              <select class="select" id="role" name="role">
-                <option value="1" disabled>Gender</option>
-                  <option value="2">User</option>
-                <option value="3">Class 2</option>
-                  <option value="4">Class 3</option> 
-                </select>
-                </div> -->
-
-              <button type="submit" class="btn btn-success btn-lg mb-1" name="submit">Submit</button>
-
-            </form>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
             </div>
             <!-- End of Main Content -->
@@ -612,7 +637,9 @@
      
 
 <script>
-
+$('.datepicker').datepicker({
+  inline: true
+});
 </script>    
 </body>
 
