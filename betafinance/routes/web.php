@@ -24,6 +24,7 @@ use App\Http\Controllers\PageController;
 
 // ADIM ROUTE
 
+
 Route::get('/login',[PageController::class,'home']);
 Route::get('/welcome',[PageController::class,'welcome']);
 Route::post('login-admin',[PageController::class,'loginAttempt']);
