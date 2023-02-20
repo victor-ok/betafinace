@@ -129,8 +129,6 @@ class homeController extends Controller
                     "paymentMethods"=>[]
             ]);
 
-
-            
             $json = json_decode($check, true);
             $json['responseBody']['transactionReference']; 
             $checkout = $check['responseBody']['checkoutUrl'];
