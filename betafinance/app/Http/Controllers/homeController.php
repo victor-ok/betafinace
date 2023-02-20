@@ -125,7 +125,7 @@ class homeController extends Controller
                     "paymentDescription"=>"Loan Application",
                     "currencyCode"=>"NGN",
                     "contractCode"=>"9096096054",
-                    "redirectUrl"=> "http://127.0.0.1:8000/loan-app",
+                    "redirectUrl"=> env('APP_URL')."/loan-app",
                     "paymentMethods"=>[]
             ]);
 
