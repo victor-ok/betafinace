@@ -125,10 +125,12 @@ class homeController extends Controller
                     "paymentDescription"=>"Loan Application",
                     "currencyCode"=>"NGN",
                     "contractCode"=>"9096096054",
-                    "redirectUrl"=> env('APP_URL').":8000/loan-app",
+                    "redirectUrl"=> "http://127.0.0.1:8000/loan-app",
                     "paymentMethods"=>[]
             ]);
 
+
+            
             $json = json_decode($check, true);
             $json['responseBody']['transactionReference']; 
             $checkout = $check['responseBody']['checkoutUrl'];
