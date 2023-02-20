@@ -127,7 +127,7 @@
             <div class='sample-content'>
                
                 <div class='sample-content-body'>
-                <span id="boot-icon" class="bi bi-check-circle-fill" style="font-size: 130px; color: rgb(255, 0, 0);"></span>
+                <span id="boot-icon" class="bi bi-check-circle-fill" style="font-size: 130px; color: rgb(60, 179, 113);"></span>
                     <h5>Congratulations!<br>Your loan has been approved. A confirmation<br> message has been sent to your Email/Phone</h5>
                     <!-- <button onclick="window.location='apply'"; >
                         Start Here
