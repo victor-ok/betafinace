@@ -52,16 +52,103 @@
   type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.js"
 ></script>
+<style>
+      body{
+        font-size: 20px;
+    font-weight: 500;
 
+
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23FF0066' d='M19 -18.3C26.2 -16.6 34.7 -12.1 41.8 -2.8C48.9 6.5 54.6 20.7 51.9 34.2C49.2 47.8 38 60.7 24.4 64.8C10.7 68.8 -5.4 63.9 -20.3 57.7C-35.2 51.4 -48.8 43.7 -52.8 32.6C-56.7 21.4 -50.9 6.7 -49.4 -9.9C-47.9 -26.6 -50.7 -45.2 -43.2 -46.9C-35.7 -48.6 -17.8 -33.4 -6 -26.2C5.9 -19.1 11.8 -20.1 19 -18.3Z' transform='translate(100 100)' /%3E%3C/svg%3E") left 30px bottom 80% no-repeat,
+    
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23FF0066' d='M33.6 -66.7C39.6 -54.7 37.7 -37.7 44.2 -25.8C50.7 -13.8 65.6 -6.9 70.9 3.1C76.3 13.1 72.1 26.1 66.6 39.8C61 53.5 54.2 67.8 42.9 73.9C31.6 80 15.8 77.9 4.7 69.8C-6.4 61.6 -12.7 47.3 -21.6 39.8C-30.6 32.3 -42 31.6 -54.3 26.1C-66.6 20.6 -79.7 10.3 -82.8 -1.8C-86 -14 -79.3 -27.9 -70.7 -39.9C-62.2 -51.8 -51.7 -61.6 -39.6 -70.1C-27.5 -78.6 -13.8 -85.7 0 -85.7C13.8 -85.7 27.6 -78.7 33.6 -66.7Z' transform='translate(100 100)' /%3E%3C/svg%3E") right bottom no-repeat ;
+
+
+    background-size: 30%; 
+    }
+
+    #footer {
+    background: darkblue;
+}
+.sample-footer {
+    margin-top: auto;
+    text-align: center;
+}
+
+.sf-logo-cont {
+    /* border: 1px solid green; */
+    width: 10%;
+    margin-left: auto;
+}
+
+.sf-footer-content {
+    background: darkblue;
+}
+
+.sf-footer-content h3 {
+    padding: 5px 0px;
+    color: white;
+}
+
+.sf-footer-content h3 span {
+    color: orange;
+}
+
+
+
+
+
+
+.sample-content {
+    /* border: 1px solid red; */
+    margin: 150px 0;
+}
+
+.sample-content-top {
+    /* border: 1px solid blue; */
+    width: fit-content;
+    margin-left: 10px;
+}
+
+.sample-content-body {
+    /* border: 1px solid pink; */
+    margin-top: 5px;
+    text-align: center;
+}
+
+.sample-content-body h6 {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.sample-content-body h1 span {
+    color: purple;
+}
+/* .smaple-content{
+  margin-top: 20px;
+} */
+.form-but{
+  /* border: 1px solid red; */
+  width: 27%;
+  margin: 50px auto 0;
+  display: flex;
+  justify-content: space-between;
+  /* margin: 0 auto; */
+  /* justify-content: center; */
+  
+}
+</style>
     </head>
     <body class="d-flex flex-column mh-100" id="page-container">
 
 
 
 
-        <div class="card text-center " id="header">
+        <div class="card text-center " id="footer">
         
-            <div class="card-header text-muted bg-primary rounded-bottom">
+            <div class="card-header text-muted  rounded-bottom">
                 <h1 class="text-white">
                     LOAN APPLICATION
                 </hi>
@@ -69,16 +156,57 @@
         </div>
 
 
-<div class="card text-center border-0 mt-4" id="middle">
+
+        
+
+        <div class='sample-container'>
+            <!-- <div class='sample-header'>
+                <h1>Landing Page</h1>
+            </div> -->
+            <div class='sample-content'>
+               
+                <div class='sample-content-body'>
+                    <h6>Click the button to accept or decline the loan amount <br>available for you.</h6>
+                    <!-- <button onclick="window.location='apply'"; >
+                        Start Here
+                    </button> -->
+                    <div class="form-but">
+                        <form class="form-example " >
+
+
+                            <button class="btn btn-warning" type="button" data-mdb-toggle="modal" data-mdb-target="#exampleModal" >
+                                    Approve Loan Amount
+                                <!-- </a> -->
+                            </button>
+                        </form>
+
+
+                          <form class="form-example " onclick="window.location='loan-decline?paymentReference=<?php echo $status?>'";  onClick="window.location.reload()" >
+                                  <button class="btn btn-warning" type="button">
+                                          Decline Loan Amount
+                                      <!-- </a> -->
+                                  </button>
+                          </form>
+
+
+
+</form>
+                        </div>
+
+                </div>
+            </div>
+            
+        </div>
+<!-- <div class="card text-center border-0 mt-4" id="middle"> -->
   <!-- <div class="card-header">
     Paystack
   </div> -->
-    <div class="card-body mt-4">
+    <!-- <div class="card-body mt-4"> -->
         
         <!-- <h5 class="card-title">Congratulations</h5> -->
-        <p class="card-text" id="amount-texty">
+        <!-- <p class="card-text" id="amount-texty">
             Click the button to accept or decline the loan amount available for you.
-        <p>
+        <p> -->
 
 
 
@@ -95,23 +223,23 @@
         // echo $status
         ?>
         '";  onClick="window.location.reload()" -->
-<div id="for">
-<form class="form-example " >
+<!-- <div id="for"> -->
+<!-- <form class="form-example " >
 
 
         <button class="btn btn-warning" type="button" data-mdb-toggle="modal" data-mdb-target="#exampleModal" >
                 Approve Loan Amount
-            <!-- </a> -->
+            </a>
         </button>
-</form>
+</form> -->
 
 
-<form class="form-example " onclick="window.location='loan-decline?paymentReference=<?php echo $status?>'";  onClick="window.location.reload()" >
+<!-- <form class="form-example " onclick="window.location='loan-decline?paymentReference=?>'";  onClick="window.location.reload()" >
         <button class="btn btn-warning" type="button">
                 Decline Loan Amount
-            <!-- </a> -->
+            </a> 
         </button>
-</form>
+</form> -->
 
         </div>
 
@@ -164,7 +292,7 @@
         
     </div>  
     
-    <footer class="page-footer font-small teal pt-4" id="footer">
+    <!-- <footer class="page-footer font-small teal pt-4">
 <div class="card text-center mt-4  rounded-top">
   
   <div class="card-footer text-muted mb-0 bg-primary">
@@ -172,8 +300,15 @@
         <span style="color:orange">Powered By:</span> PISI Technologies
     </p>
   </div>
-</div>
-
+</div> -->
+<!-- <div class='sample-footer'>
+                <div class='sf-logo-cont'>
+                <img src="{{ asset('image/BetaFinanceLogo2.jpg') }}" class="img-responsive center-block d-block mx-auto" height="100" width="100"  alt="Sample Image">
+                </div>
+                <div class='sf-footer-content'>
+                    <h3><span>Powered By:</span> PiSi Technologies</h3>
+                </div>
+            </div> -->
     <!-- Footer -->
     <!-- <footer class="page-footer font-small teal mb-0">
 <div class="card text-center">
@@ -184,6 +319,15 @@
     </p>
   </div>
 </div> -->
+
+<div class='sample-footer'>
+                <div class='sf-logo-cont'>
+                <img src="{{ asset('image/BetaFinanceLogo2.jpg') }}" class="img-responsive center-block d-block mx-auto" height="100" width="100"  alt="Sample Image">
+                </div>
+                <div class='sf-footer-content'>
+                    <h3><span>Powered By:</span> PiSi Technologies</h3>
+                </div>
+            </div>
 
 
 
