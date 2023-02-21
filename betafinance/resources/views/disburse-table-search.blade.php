@@ -22,8 +22,8 @@
     <!-- "{{ asset('css/app.css') }}" -->
 
     
-    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" >
+    <link href="{{ secure_asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" >
 
 
     
@@ -493,7 +493,7 @@
                                         <th>Monnify Ref</th>
                                         <th>Payment Status</th>
                                         <th>Available Loan</th>
-                                        <th>Details</th>
+                                        <th>Dsecure_asset
                                         <th>Disbursed</th>
                                         <th>Created_at</th>
                                         <th>Account</th>

@@ -636,20 +636,20 @@ class homeController extends Controller
         $clean_u = str_replace("%7C", "|", $monRef);
         // dd($clean_u);
 
-        $checked = LoanApplicants::where('monnifyRef', $clean_u)->first();
-        $n = $checked['name'];
-        $d = $checked['dob'];
-        $id = $checked['id'];
-        $idnum = $checked['idnum'];
-        $bvn = $checked['bvn'];
-        $email = $checked['email'];
-        $phone = $checked['phone'];
-        $bank = $checked['bank'];
-        $account = $checked['account'];
-        $loanamount = $checked['editedamount'];
-        // dd($checked);
+        $checkedd = LoanApplicants::where('monnifyRef', $clean_u)->first();
+        $n = $checkedd['name'];
+        $d = $checkedd['dob'];
+        $id = $checkedd['id'];
+        $idnum = $checkedd['idnum'];
+        $bvn = $checkedd['bvn'];
+        $email = $checkedd['email'];
+        $phone = $checkedd['phone'];
+        $bank = $checkedd['bank'];
+        $account = $checkedd['account'];
+        $loanamount = $checkedd['editedamount'];
+        dd($checkedd);
 
-        return view('applicationdetailsconfirm')->with(compact('n', 'd', 'id', 'idnum', 'bvn', 'email', 'phone', 'bank', 'account', 'loanamount'));
+        return view('applicationdetailsconfirm')->with(compact('n', 'd', 'idnum', 'bvn', 'email', 'phone', 'bank', 'account', 'loanamount'));
     }
 
     public function confirm_after_edit($email) {

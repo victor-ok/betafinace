@@ -13,7 +13,7 @@
 
     <!-- Custom fonts for this template-->
     <!-- "{{ asset('css/main.css') }}" -->
-    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ secure_asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -22,8 +22,8 @@
     <!-- "{{ asset('css/app.css') }}" -->
 
     
-    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" >
+    <link href="{{ secure_asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" >
 
 
     
@@ -499,8 +499,7 @@
                                         <th>Monnify Ref</th>
                                         <th>Payment Status</th>
                                         <th>Available Loan</th>
-                                        <th>Details</th>
-                                        <th>Disbursed</th>
+                                        <th>Details</th>secure_asset                                    <th>Disbursed</th>
                                         <!-- <th>Created_at</th> -->
                                         <th>Updated_at</th>
                                     </tr>

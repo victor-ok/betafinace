@@ -107,7 +107,7 @@
                         
                         <p class="text-center font-weight-bold">Name: {{ $n }}</p>
                         <p class="text-center font-weight-bold">Date Of Birth: {{ $d }}</p>
-                        <p class="text-center font-weight-bold">ID: {{ $id }}</p>
+                        <!-- <p class="text-center font-weight-bold">ID: {{ $id }}</p> -->
                         <p class="text-center font-weight-bold">ID: {{ $idnum }}</p>
                         <p class="text-center font-weight-bold">BVN: {{ $bvn }}</p>
                         <p class="text-center font-weight-bold">Email: {{ $email }}</p>
