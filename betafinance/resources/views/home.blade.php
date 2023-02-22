@@ -31,6 +31,8 @@
 />
 
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- MDB -->
 <script
   type="text/javascript"
@@ -96,8 +98,13 @@
 
 .sf-logo-cont {
     /* border: 1px solid green; */
-    width: 10%;
+    width: 80px;
+    height: 80px;
     margin-left: auto;
+}
+.sf-logo-cont img{
+    width: 100%;
+    height: 100%;
 }
 
 .sf-footer-content {
@@ -111,6 +118,10 @@
 
 .sf-footer-content h3 span {
     color: orange;
+}
+
+#container{
+    margin-top: 10%;
 }
  </style>   
 
@@ -129,7 +140,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 mt-4 mb-4">
-                    <img src="{{ asset('image/BetaFinanceLogo2.jpg') }}" class="img-responsive center-block d-block mx-auto" height="100" width="100"  alt="Sample Image">
+                    <img src="{{ asset('image/BetaFinanceLogo2.jpg') }}"  alt="Sample Image">
                 </div>
             </div>
         </div>
@@ -137,7 +148,7 @@
 
 
 
-        <div class="container h-100">
+        <div class="container h-100" id="container">
             <div class="row h-100 justify-content-center align-items-center">
                 <div class="col-10 col-md-8 col-lg-6">
                 
@@ -339,7 +350,7 @@
                     Choose one of the payments above to <br>pay 1000 to paystack
                 </div> -->
             <!-- <hr style="width:20%;text-align:center;margin-left:50; margin-left:50"> -->
-        <div>
+        <!-- <div> -->
 
   <!-- Button trigger modal -->
 <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -364,7 +375,7 @@
 
 <div class='sample-footer'>
                 <div class='sf-logo-cont'>
-                <img src="{{ asset('image/BetaFinanceLogo2.jpg') }}" class="img-responsive center-block d-block mx-auto" height="100" width="100"  alt="Sample Image">
+                <img src="{{ asset('image/BetaFinanceLogo2.jpg') }}"   alt="Sample Image">
                 </div>
                 <div class='sf-footer-content'>
                     <h3><span>Powered By:</span> PiSi Technologies</h3>

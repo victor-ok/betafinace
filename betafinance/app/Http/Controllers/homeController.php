@@ -647,7 +647,7 @@ class homeController extends Controller
         $bank = $checkedd['bank'];
         $account = $checkedd['account'];
         $loanamount = $checkedd['editedamount'];
-        dd($checkedd);
+        // dd($checkedd);
 
         return view('applicationdetailsconfirm')->with(compact('n', 'd', 'idnum', 'bvn', 'email', 'phone', 'bank', 'account', 'loanamount'));
     }

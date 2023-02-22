@@ -37,9 +37,17 @@
   src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.js"
 ></script>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
+    body {
+        margin: 0;
+        padding: 0;
+        
+    }
    .sample-container {
     /* border: 1px solid black; */
+    width: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -82,7 +90,7 @@
 
 .sample-content-body {
     /* border: 1px solid pink; */
-    margin-top: 5px;
+    margin-top: 10%;
     text-align: center;
 }
 
@@ -115,17 +123,22 @@
 
 .sample-footer {
     margin-top: auto;
-    text-align: center;
+    
 }
 
 .sf-logo-cont {
     /* border: 1px solid green; */
-    width: 10%;
+    width: 80px;
+    height: 80px;
     margin-left: auto;
 }
-
+.sf-logo-cont img{
+    width: 100%;
+    height: 100%;
+}
 .sf-footer-content {
     background: darkblue;
+    text-align: center;
 }
 
 .sf-footer-content h3 {
@@ -136,8 +149,13 @@
 .sf-footer-content h3 span {
     color: orange;
 }
+@media screen and (max-width: 850px){
+    .sample-content-body{
+        margin-top: 50%;
+        /* border: 1px solid red; */
+    }
+}
  </style>   
-
        
  </head>
     <body>
@@ -158,7 +176,7 @@
             </div>
             <div class='sample-footer'>
                 <div class='sf-logo-cont'>
-                <img src="{{ asset('image/BetaFinanceLogo2.jpg') }}" class="img-responsive center-block d-block mx-auto" height="100" width="100"  alt="Sample Image">
+                <img src="{{ asset('image/BetaFinanceLogo2.jpg') }}" alt="Sample Image">
                 </div>
                 <div class='sf-footer-content'>
                     <h3><span>Powered By:</span> PiSi Technologies</h3>
