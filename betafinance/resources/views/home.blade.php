@@ -140,7 +140,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 mt-4 mb-4">
-                    <img src="{{ asset('image/BetaFinanceLogo2.jpg') }}"  alt="Sample Image">
+                    <img src="{{ asset('image/BetaFinanceLogo2.jpg') }}"  width=100 height=100 alt="Sample Image">
                 </div>
             </div>
         </div>
