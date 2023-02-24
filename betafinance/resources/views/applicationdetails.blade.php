@@ -90,7 +90,7 @@
         <div class="container mt-4">
             <div class="row">
                 <div class="col-lg-12">
-                    <img src="{{ asset('image/BetaFinanceLogo2.jpg') }}"   alt="Sample Image">
+                    <img src="{{ asset('image/BetaFinanceLogo2.jpg') }}" class="img-responsive center-block d-block mx-auto" height="100" width="100"  alt="Sample Image">
                 </div>
             </div>
         </div>
